@@ -3,7 +3,6 @@
 import os
 import sys
 
-c = os.chdir('parsClick')
 
 class FileSort(object):
     
@@ -44,37 +43,31 @@ class FileSort(object):
 
 
 if __name__ == '__main__':
-	f = FileSort()
-	
-	''' Defualt value prefix '''
-	# imgExts   = [".png", ".jpg", ".jpeg"]
-	# images  = [file for file in files if os.path.splitext(file)[1].lower() in imgExts]
-
-	# docExts   = [".txt", ".docs", ".doc", ".pdf"]
-	# docs = [file for file in files if os.path.splitext(file)[1].lower() in docExts]
-
-	# mediaExts = [".mp4", ".mp3", ".flv"]
-	# medias = [file for file in files if os.path.splitext(file)[1].lower() in mediaExts]
-
-	imgExts   = input('Please Enter your prefeix images: ').split()
-	docExts   = input('Please Enter your prefeix docs: ').split()
-	mediaExts = input('Please Enter your prefeix medias: ').split()
-
-    	# Create Folder for transfer file
-	f.createIfNotExist('Images')
-	f.createIfNotExist('Docs')
-	f.createIfNotExist('Media')
-	f.createIfNotExist('Others')
-	
-	####################################
-	# listi az fileha az pasvand haye vared shodeh.
-
-	images = f.createPrefixFile(imgExts)
-	medias = f.createPrefixFile(mediaExts)
-	docs   = f.createPrefixFile(docExts)
-
-	# Move file in respective folder
-	f.move('Docs',   docs)
-	f.move('Media',  medias)
-	f.move('Images', images)
-	f.move('Others') 
+        
+        path = input('Please enter the path where you want the files to be sorted: ')
+        c = os.chdir(path)
+        f = FileSort()
+        
+        
+        imgExts   = input('Please Enter your prefeix images: ').split()
+        docExts   = input('Please Enter your prefeix docs: ').split()
+        mediaExts = input('Please Enter your prefeix medias: ').split()
+        
+        # Create Folder for transfer file
+        f.createIfNotExist('Images')
+        f.createIfNotExist('Docs')
+        f.createIfNotExist('Media')
+        f.createIfNotExist('Others')
+        
+        ####################################
+        # listi az fileha az pasvand haye vared shodeh.
+        
+        images = f.createPrefixFile(imgExts)
+        medias = f.createPrefixFile(mediaExts)
+        docs   = f.createPrefixFile(docExts)
+        
+        # Move file in respective folder
+        f.move('Docs',   docs)
+        f.move('Media',  medias)
+        f.move('Images', images)
+        f.move('Others') 
